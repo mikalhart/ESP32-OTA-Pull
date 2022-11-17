@@ -1,0 +1,36 @@
+#######################################
+# Syntax Coloring Map for ESP32-OTA-Pull
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ActionType KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+CheckForUpdate	KEYWORD2
+OverrideDevice	KEYWORD2
+OverrideBoard	KEYWORD2
+SetConfig	KEYWORD2
+AllowDowngrades	KEYWORD2
+SetCallback	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+UPDATE_AVAILABLE	LITERAL1
+NO_UPDATE_PROFILE_FOUND	LITERAL1
+NO_UPDATE_AVAILABLE	LITERAL1
+UPDATE_OK	LITERAL1
+HTTP_FAILED	LITERAL1
+WRITE_ERROR	LITERAL1
+JSON_PROBLEM	LITERAL1
+OTA_UPDATE_FAIL	LITERAL1
+DONT_DO_UPDATE	LITERAL1
+UPDATE_BUT_NO_BOOT	LITERAL1
+UPDATE_AND_BOOT	LITERAL1

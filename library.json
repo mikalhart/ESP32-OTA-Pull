@@ -1,0 +1,22 @@
+{
+  "name": "ESP32-OTA-Pull",
+  "version": "1.0.0",
+  "keywords": "ESP32,OTA,WiFi,HTTP",
+  "description": "A library for simple 'pull-based' ESP32 OTA updates",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/mikalhart/ESP32-OTA-Pull.git"
+  },
+  "authors":
+  [
+    {
+       "name": "Mikal Hart",
+       "email": "mikal@arduniana.org",
+       "url": "http://arduiniana.org",
+       "maintainer": true
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "Espressif 32"
+}
