@@ -27,7 +27,7 @@ A minimal JSON filter file simply tells the library what the new image's version
 
 This example informs the library that Version 2.0.0 of the sketch has been posted at the specified location.  Sketches running a version less than 2.0.0 will be updated.  Sketches greater than 2.0.0 will not be, unless downgrades are enabled.
 
-A more elaborate filter file might also constrain the update based on the "Board" name---by default the ARDUINO_BOARD symbol that is predefined based on which board type was selected at build---the "Device" name (the MAC address), and an optional user-specified "Config" string.  In the example below, a device will be updated only if it was built with the specified board profile (ESP32_DEV), its MAC address and Config strings match exactly, and it is currently running a sketch with version less than 2.
+A more elaborate filter file might also constrain the update based on the "Board" name&mdash;by default the ARDUINO_BOARD symbol that is predefined based on which board type was selected at build&mdash;the "Device" name (the MAC address), and an optional user-specified "Config" string.  In the example below, a device will be updated only if it was built with the specified board profile (ESP32_DEV), its MAC address and Config strings match exactly, and it is currently running a sketch with version less than 2.
 
 ```
 {
