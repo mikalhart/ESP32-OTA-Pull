@@ -1,5 +1,5 @@
 # ESP32-OTA-Pull
-An Arduino library to faciliate simple ESP32 "**pull**"-based OTA updates
+An Arduino library to facilitate simple ESP32 "**pull**"-based OTA updates
 
 ## "Pull" Design
 There are a number of good Arduino libraries out there for OTA ("Over The Air") firmware updates.  Example: [ArduinoOTA](https://github.com/jandrassy/ArduinoOTA) and [AsyncElegantOTA](https://github.com/ayushsharma82/AsyncElegantOTA).  These libraries use a "push" technology, wherein you identify a target device you'd like to update and push/upload a new firmware to it.
