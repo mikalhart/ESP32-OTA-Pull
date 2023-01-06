@@ -36,7 +36,12 @@ class ESP32OTAPull
 public:
     enum ActionType { DONT_DO_UPDATE, UPDATE_BUT_NO_BOOT, UPDATE_AND_BOOT };
 
-    /// Return codes from CheckForOTAUpdate
+    String getVersion()
+    {
+        return CVersion;
+    }
+
+    // Return codes from CheckForOTAUpdate
     enum { UPDATE_AVAILABLE = -3, NO_UPDATE_PROFILE_FOUND = -2, NO_UPDATE_AVAILABLE = -1, UPDATE_OK = 0, HTTP_FAILED = 1, WRITE_ERROR = 2, JSON_PROBLEM = 3, OTA_UPDATE_FAIL = 4 };
 
 private:
@@ -45,6 +50,7 @@ private:
     String Board = ARDUINO_BOARD;
     String Device = "";
     String Config = "";
+    String CVersion = "";
     bool DowngradesAllowed = false;
 
     int DownloadJson(const char* URL, String& payload)
@@ -205,7 +211,7 @@ public:
         {
             String CBoard = config["Board"].isNull() ? "" : (const char *)config["Board"];
             String CDevice = config["Device"].isNull() ? "" : (const char *)config["Device"];
-            String CVersion = config["Version"].isNull() ? "" : (const char *)config["Version"];
+            CVersion = config["Version"].isNull() ? "" : (const char *)config["Version"];
             String CConfig = config["Config"].isNull() ? "" : (const char *)config["Config"];
             if ((CBoard.isEmpty() || CBoard == BoardName) &&
                 (CDevice.isEmpty() || CDevice == DeviceName) &&
