@@ -12,6 +12,7 @@ ActionType KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
+GetVersion  KEYWORD2
 CheckForUpdate	KEYWORD2
 OverrideDevice	KEYWORD2
 OverrideBoard	KEYWORD2

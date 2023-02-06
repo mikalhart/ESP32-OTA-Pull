@@ -1,6 +1,6 @@
 /*
 Further-OTA-Examples - other techniques for using ESP32-OTA-Pull library for OTA
-Copyright (C) 2022 Mikal Hart
+Copyright (C) 2022-3 Mikal Hart
 All rights reserved.
 
 https://github.com/mikalhart/ESP32-OTA-Pull
@@ -57,9 +57,8 @@ void setup()
 	Serial.printf("CheckForOTAUpdate returned %d (%s)\n\n", ret, errtext(ret));
 
 	// After we've checked, we can obtain the version from the JSON file
-    String otaVersion = ota.getVersion();
-	Serial.print("OTA Version Available: ");
-	Serial.println(otaVersion);
+    String otaVersion = ota.GetVersion();
+	Serial.printf("OTA Version Available: %s\n", otaVersion.c_str());
 
 	delay(3000);
 

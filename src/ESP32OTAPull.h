@@ -4,7 +4,7 @@ updates, where the image updates are posted on the web.
 
 MIT License
 
-Copyright (c) 2022 Mikal Hart
+Copyright (c) 2022-3 Mikal Hart
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -36,13 +36,8 @@ class ESP32OTAPull
 public:
     enum ActionType { DONT_DO_UPDATE, UPDATE_BUT_NO_BOOT, UPDATE_AND_BOOT };
 
-    String getVersion()
-    {
-        return CVersion;
-    }
-
     // Return codes from CheckForOTAUpdate
-    enum { UPDATE_AVAILABLE = -3, NO_UPDATE_PROFILE_FOUND = -2, NO_UPDATE_AVAILABLE = -1, UPDATE_OK = 0, HTTP_FAILED = 1, WRITE_ERROR = 2, JSON_PROBLEM = 3, OTA_UPDATE_FAIL = 4 };
+    enum ErrorCode { UPDATE_AVAILABLE = -3, NO_UPDATE_PROFILE_FOUND = -2, NO_UPDATE_AVAILABLE = -1, UPDATE_OK = 0, HTTP_FAILED = 1, WRITE_ERROR = 2, JSON_PROBLEM = 3, OTA_UPDATE_FAIL = 4 };
 
 private:
     void (*Callback)(int offset, int totallength) = NULL;
@@ -132,8 +127,15 @@ private:
     }
 
 public:
+    /// @brief Return the version string of the binary, as reported by the JSON
+    /// @return The firmware version
+    String GetVersion()
+    {
+        return CVersion;
+    }
+
     /// @brief Override the default "Device" id (MAC Address)
-    /// @param device A string defining the particular device (instance)
+    /// @param device A string identifying the particular device (instance) (typically e.g., a MAC address)
     /// @return The current ESP32OTAPull object for chaining
     ESP32OTAPull &OverrideDevice(const char *device)
     {
@@ -142,7 +144,7 @@ public:
     }
 
     /// @brief Override the default "Board" value of ARDUINO_BOARD
-    /// @param board A string defining the board (class) being targeted
+    /// @param board A string identifying the board (class) being targeted
     /// @return The current ESP32OTAPull object for chaining
     ESP32OTAPull &OverrideBoard(const char *board)
     {
@@ -178,16 +180,13 @@ public:
     }
 
     /// @brief The main entry point for OTA Update
-    /// @param URL The URL for the JSON filter file
+    /// @param JSON_URL The URL for the JSON filter file
     /// @param CurrentVersion The version # of the current (i.e. to be replaced) sketch
-    /// @param callback A progress reporting callback function (may be NULL)
-    /// @param Board Specific Board type this sketch is for (defaults to ARDUINO_BOARD)
-    /// @param DeviceName An identifier for the current device instance, defaults to WiFi MAC Address
-    /// @param Config User-settable string for further filtering
-    /// @return Status or HTTP error code
-    int CheckForOTAUpdate(const char* JSON_URL, const char *version, ActionType Action = UPDATE_AND_BOOT)
+    /// @param ActionType The action to be performed.  May be any of DONT_DO_UPDATE, UPDATE_BUT_NO_BOOT, UPDATE_AND_BOOT (default)
+    /// @return ErrorCode or HTTP failure code (see enum above)
+    int CheckForOTAUpdate(const char* JSON_URL, const char *CurrentVersion, ActionType Action = UPDATE_AND_BOOT)
     {
-        version = version == NULL ? "" : version;
+        CurrentVersion = CurrentVersion == NULL ? "" : CurrentVersion;
 
         // Downloading OTA Json...
         String Payload;
@@ -217,8 +216,8 @@ public:
                 (CDevice.isEmpty() || CDevice == DeviceName) &&
                 (CConfig.isEmpty() || CConfig == ConfigName))
             {
-                if (CVersion.isEmpty() || CVersion > String(version) ||
-                    (DowngradesAllowed && CVersion != String(version)))
+                if (CVersion.isEmpty() || CVersion > String(CurrentVersion) ||
+                    (DowngradesAllowed && CVersion != String(CurrentVersion)))
                     return Action == DONT_DO_UPDATE ? UPDATE_AVAILABLE : DoOTAUpdate(config["URL"], Action);
                 foundProfile = true;
             }

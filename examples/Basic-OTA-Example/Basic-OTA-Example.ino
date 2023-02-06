@@ -1,6 +1,6 @@
 /*
 Basic-OTA-Example - simple demonstration of ESP32-OTA-Pull library for doing "pull" based OTA updates
-Copyright (C) 2022 Mikal Hart
+Copyright (C) 2022-3 Mikal Hart
 All rights reserved.
 
 https://github.com/mikalhart/ESP32-OTA-Pull
