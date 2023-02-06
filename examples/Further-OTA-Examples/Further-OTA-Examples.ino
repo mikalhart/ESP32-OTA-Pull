@@ -56,6 +56,11 @@ void setup()
 		.CheckForOTAUpdate(JSON_URL, VERSION, ESP32OTAPull::DONT_DO_UPDATE);
 	Serial.printf("CheckForOTAUpdate returned %d (%s)\n\n", ret, errtext(ret));
 
+	// After we've checked, we can obtain the version from the JSON file
+    String otaVersion = ota.getVersion();
+	Serial.print("OTA Version Available: ");
+	Serial.println(otaVersion);
+
 	delay(3000);
 
 	// Example 2
