@@ -85,7 +85,7 @@ A device with Config "16MB" will match the first block and install the 16MB bina
 If the JSON file says that the "Version" number of the posted image is greater than the current VERSION supplied in the call to CheckForOTAUpdate, then it will download and install it!
 
 ## How it works
-The **CheckForUpdate** method downloads the specified JSON file and begins iterating through all the "Configurations" provided.  When it finds one that matches the Configuration of the current sketch, it compares its Version string with the value passed into the method.  If the posted Version is greater than the local one, an update is done, subject to the constraints of the "Action" parameter.  If the posted Version is less, then the update is only done if AllowDowngrades has been set.
+The **CheckForOTAUpdate** method downloads the specified JSON file and begins iterating through all the "Configurations" provided.  When it finds one that matches the Configuration of the current sketch, it compares its Version string with the value passed into the method.  If the posted Version is greater than the local one, an update is done, subject to the constraints of the "Action" parameter.  If the posted Version is less, then the update is only done if AllowDowngrades has been set.
 
 ## Extended techniques
 See the "Further-OTA-Examples" sketch for examples on how you can:
