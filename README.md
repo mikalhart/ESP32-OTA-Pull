@@ -7,13 +7,13 @@ There are a number of good Arduino libraries out there for OTA ("Over The Air") 
 [ESP32-OTA-Pull](https://github.com/mikalhart/ESP32-OTA-Pull) uses a different, "pull", strategy. In this scenario, you post new firmware image(s) to a webserver, and your WiFi-enabled devices find the new images and update themselves. It scales. You don't have to target each device individually; as long as your devices can connect to WiFi, they can update themselves.
 
 ## Setup
-With ESP32-OTA-Pull, whenever you're ready to publish a new firmware for your device, you post two files to your webserver:
-- The new version of your compiled binary program (typically a .bin "**image**")
-- A small human-readable **JSON** format that describes the image.  This is what the library consults to determine whether to download and install the new firmware.
+With ESP32-OTA-Pull, whenever you're ready to publish a new firmware for your device, you post two files to a webserver:
+- The new version of your compiled binary program (typically a .bin "image")
+- A small, human-readable **JSON** file that describes the image.  This is what the library consults to determine whether to download and install the new firmware.
 
 
-## Filtering
-A minimal JSON filter file simply tells the library where the new firmware can be found and what its version is.
+## Building the JSON "filter" file
+A minimal JSON file simply tells the library where the new firmware can be found and what its version is.
 
 ```
 {
