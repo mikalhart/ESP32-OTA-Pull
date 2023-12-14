@@ -145,7 +145,7 @@ void DisplayInfo()
 	Serial.printf("    {\n");
 	Serial.printf("      \"Board\": \"%s\",\n", ARDUINO_BOARD);
 	Serial.printf("      \"Device\": \"%s\",\n", WiFi.macAddress().c_str());
-	Serial.printf("      \"Version\": %s,\n", VERSION);
+	Serial.printf("      \"Version\": \"%s\",\n", VERSION);
 	Serial.printf("      \"URL\": \"%s\"\n", exampleImageURL);
 	Serial.printf("    }\n");
 	Serial.printf("  ]\n");
