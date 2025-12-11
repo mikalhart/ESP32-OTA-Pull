@@ -1,6 +1,6 @@
 /*
 Further-OTA-Examples - other techniques for using ESP32-OTA-Pull library for OTA
-Copyright (C) 2022-3 Mikal Hart
+Copyright (C) 2022-25 Mikal Hart
 All rights reserved.
 
 https://github.com/mikalhart/ESP32-OTA-Pull

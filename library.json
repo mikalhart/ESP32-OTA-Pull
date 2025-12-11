@@ -1,6 +1,6 @@
 {
   "name": "ESP32-OTA-Pull",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": "ESP32,OTA,WiFi,HTTP",
   "description": "A library for simple 'pull-based' ESP32 OTA updates",
   "repository":
